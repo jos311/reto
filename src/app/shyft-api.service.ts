@@ -5,7 +5,7 @@ import { map, of } from 'rxjs';
 @Injectable({ providedIn: 'root'})
 export class ShyftApiService {
   private readonly _httpClient = inject(HttpClient);
-  private readonly _headers = { 'x-api-key' : ''};
+  private readonly _headers = { 'x-api-key' : '4cvPJ1L3IlcX'};
   private readonly _mint = '7EYnhQoR9YM3N7UoaKRoA44Uy8JeaZV3qyouov87awMs';
 
   getAccount(publicKey: string | null | undefined) {
