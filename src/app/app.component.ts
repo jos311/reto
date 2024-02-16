@@ -34,6 +34,16 @@ import { MatAnchor} from '@angular/material/button'
           </li>
         </ul>
       </nav>
+      
+        <h2 class="text-2xl text-center">Transacciones</h2>
+        <div class = "flex justify-center gap-4">
+        @for (item of transactions() ?? []; track $index) {
+          <ul>{{ item.type }} | {{item.amount}} | {{ item.timestamp }} | {{ item.status }}</ul>
+        } @empty {
+          <ul>No hay transacctiones</ul>
+        }
+        </div>
+    
     </header>
     <main>
       <router-outlet></router-outlet>
@@ -48,5 +58,10 @@ export class AppComponent {
   readonly account = computedAsync(
     () => this._shyftApiService.getAccount(this._publicKey()?.toBase58()),
     { requireSync: true},
+  );
+
+  readonly transactions = computedAsync(
+    () => this._shyftApiService.getTransactions(this._publicKey()?.toString()),
+  
   )
 }
