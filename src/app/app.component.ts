@@ -48,5 +48,6 @@ export class AppComponent {
   readonly account = computedAsync(
     () => this._shyftApiService.getAccount(this._publicKey()?.toBase58()),
     { requireSync: true},
-  )
+  );
+
 }

@@ -1,0 +1,15 @@
+.mat-card,
+h2 {
+  color: white;
+  padding: 8px;
+}
+
+.mat-card,
+p {
+  color: white;
+}
+
+table,
+th {
+  background-color: rgb(116, 116, 117);
+}
