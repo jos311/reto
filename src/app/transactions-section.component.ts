@@ -9,19 +9,19 @@ import { ShyftApiService } from './shyft-api.service';
 
 @Component({
   selector: 'hdb-week2-transactions-section',
-  styleUrls: ['./transactions-section.css'],
+  //styleUrls: ['./transactions-section.css'],
   imports: [MatTableModule, MatCard],
   standalone: true,
   //encapsulation: ViewEncapsulation.Emulated,
   template: `
-  <section class="flex justify-center items-center gap-4">
+  <section class="flex justify-center items-center gap-4 mt-2">
     <mat-card>
-      <h2 class="text-center text-3xl mb-4">Historial de Transacciones</h2>
+      <h2 class="text-center text-3xl mb-4 text-white">Historial de Transacciones</h2>
 
       @if (!transactions()) {
-        <p class="text-center">No hay transacciones.</p>
+        <p class="text-center text-red-500">No hay transacciones.</p>
       } @else if (transactions()?.length === 0) {
-        <p class="text-center">Conecta tu wallet para ver las transacciones.</p>
+        <p class="text-center text-orange-500">Conecta tu wallet para ver las transacciones.</p>
       } @else {
         <table mat-table [dataSource]="transactions() ?? []">
           <ng-container matColumnDef="type">

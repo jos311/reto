@@ -6,8 +6,17 @@ import { URLSearchParams } from "url";
 @Injectable({ providedIn: 'root'})
 export class ShyftApiService {
   private readonly _httpClient = inject(HttpClient);
-  private readonly _headers = { 'x-api-key' : '4cvPJ1L3IlcX9sb2'};
+  private readonly _key = '4cvPJ1L3IlcX9sb2';
+  private readonly _header = { 'x-api-key' : this._key };
   private readonly _mint = '7EYnhQoR9YM3N7UoaKRoA44Uy8JeaZV3qyouov87awMs';
+
+getEndpoint() {
+  const url = new URL('https://rpc.shyft.to');
+
+  url.searchParams.set('api_key', this._key);
+
+  return url.toString();
+}
 
   getAccount(publicKey: string | null | undefined) {
     if (!publicKey) {
@@ -23,7 +32,7 @@ export class ShyftApiService {
     return this._httpClient
       .get<{ result: {balance: number; info: { image: string } }}>(
         url.toString(),
-        {headers: this._headers}
+        {headers: this._header}
       )
       .pipe(map((response) => response.result));
   }
@@ -41,7 +50,7 @@ export class ShyftApiService {
 
     return this._httpClient.get<{
       result: { type : string; timestamp: string; status: string; amount: string}[]
-    }>(url.toString(), {headers: this._headers})
+    }>(url.toString(), {headers: this._header})
     .pipe(
       map((response) => response.result));
   }
