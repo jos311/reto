@@ -6,7 +6,7 @@ import { URLSearchParams } from "url";
 @Injectable({ providedIn: 'root'})
 export class ShyftApiService {
   private readonly _httpClient = inject(HttpClient);
-  private readonly _key = '4cvPJ1L3IlcX9sb2';
+  private readonly _key = 'XXX';
   private readonly _header = { 'x-api-key' : this._key };
   private readonly _mint = '7EYnhQoR9YM3N7UoaKRoA44Uy8JeaZV3qyouov87awMs';
 
